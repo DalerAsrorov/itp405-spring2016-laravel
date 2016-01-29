@@ -40,6 +40,17 @@
     .full {
       width: 100%;
     }
+
+    .option-name {
+      background: #5bc0de;
+      padding: 6px;
+      border: 1px solid grey;
+      color: white;
+    }
+
+    .options-container {
+      padding: 0;
+    }
   </style>
 </head>
 <body>
@@ -52,20 +63,30 @@
         <div class="input-group search-container full">
           <input type="text" class="form-control full" name="movie" placeholder="Enter DVD title">
           <div class="options-div">
-            <select class="form-control">
-              <option value="-2">All </option>
-              <?php foreach($genres as $genre) : ?>
-                <option value=<?php echo $genre->id; ?>><?php echo $genre->genre_name; ?></option>
-              <?php endforeach; ?>
-            </select>
+            <div class="option-name col-lg-3">
+              Genres:
+            </div>
+            <div class="options-container col-lg-9">
+              <select class="form-control" name="genre">
+                <option value="-1">All </option>
+                <?php foreach($genres as $genre) : ?>
+                  <option value=<?php echo $genre->id; ?>><?php echo $genre->genre_name; ?></option>
+                <?php endforeach; ?>
+              </select>
+            </div>
           </div>
           <div class="options-div">
-            <select class="form-control">
-              <option value="-2">All </option>
-              <?php foreach($ratings as $rating) : ?>
-                <option value=<?php echo $rating->id; ?>><?php echo $rating->rating_name; ?></option>
-              <?php endforeach; ?>
-            </select>
+            <div class="option-name col-lg-3">
+              Ratings:
+            </div>
+            <div class="options-container col-lg-9">
+              <select class="form-control" name="rating">
+                <option value="-2">All </option>
+                <?php foreach($ratings as $rating) : ?>
+                  <option value=<?php echo $rating->id; ?>><?php echo $rating->rating_name; ?></option>
+                <?php endforeach; ?>
+              </select>
+            </div>
           </div>
         </div>
         <div class=" full">
