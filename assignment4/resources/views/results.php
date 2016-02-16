@@ -31,6 +31,11 @@
       margin-top: 20px;
     }
 
+    .review {
+      margin-top: -35px;
+      /* padding: 10px; */
+      margin-right: 10px;
+    }
     .box {
       width: 50%;
       background: grey;
@@ -105,6 +110,9 @@
       <h3>
         <?php echo $movie->title ?>
       </h3>
+      <div class="pull-right review">
+        <a href=<?php echo "/dvds/" . $movie->id ?>> Review </a>
+      </div>
     </div>
     <div class="content">
       <table class="table">

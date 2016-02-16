@@ -14,8 +14,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dvds/search', 'DvdController@search');
-Route::get('/dvds', 'DvdController@results');
+
+Route::group(['middleware' => 'web'], function() {
+  Route::get('/dvds/search', 'DvdController@search');
+  Route::get('/dvds', 'DvdController@results');
+  Route::get('/dvds/{id}', 'DvdController@details');
+  Route::post('/dvds', 'DvdController@store');
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +32,3 @@ Route::get('/dvds', 'DvdController@results');
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-
-Route::group(['middleware' => ['web']], function () {
-    //
-});
