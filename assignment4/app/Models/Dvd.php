@@ -10,4 +10,12 @@ class Dvd extends Model
     {
       return $this->belongsTo('App\Models\Genre');
     }
+    public function label()
+    {
+      return $this->belongsTo('App\Models\Label');
+    }
+    public function rating()
+    {
+      return $this->belongsTo('App\Models\Rating');
+    }
 }

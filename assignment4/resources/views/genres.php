@@ -102,6 +102,13 @@
     .thead {
       font-weight: 800;
       font-size: 20px;
+
+    }
+
+    .back-link {
+      color: white;
+      font-weight: 800;
+      font-size: 26px;
     }
   </style>
 </head>
@@ -109,7 +116,7 @@
 
   <div class="container">
     <div class="row">
-      <h1 class="genre-title"> <?php echo $genre->genre_name ?> </h1>
+      <a href="/dvds/search" class="back-link"> Back to Search </a> <h1 class="genre-title"><?php echo $genre->genre_name ?> </h1>
           <div class="list-of-movies class="table-responsive"">
             <table class="table">
               <thead class="thead">
@@ -122,10 +129,10 @@
               </thead>
               <?php foreach($dvds as $dvd) : ?>
                 <tr>
-                  <td><?php echo $dvd->title ?></td>
-                  <td><?php echo $dvd->rating_id ?></td>
-                  <td><?php echo $dvd->genre_id ?></td>
-                  <td><?php echo $dvd->label_id ?></td>
+                  <td><?php echo $dvd->title; ?></td>
+                  <td><?php echo $dvd->rating['rating_name']; ?></td>
+                  <td><?php echo $dvd->genre['genre_name']; ?></td>
+                  <td><?php echo $dvd->label['label_name']; ?></td>
                 </tr>
               <?php endforeach; ?>
             </table>
