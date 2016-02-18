@@ -51,12 +51,43 @@
     .options-container {
       padding: 0;
     }
+
+    .sidebar {
+      position: absolute;
+      left: 0;
+      width: 200px;
+      height: 100%;
+      background: #000033;
+      color: #ccddff;
+      padding: 5px;
+    }
+
+    .sidebar h3 {
+      text-align: center;
+    }
+
+    .sidebar ul {
+      list-style-type:none;
+    }
+
   </style>
 </head>
 <body>
 
 <div class="container">
   <div class="row">
+    <div class="sidebar">
+      <h3>Genres</h3>
+      <div class="list">
+        <ul>
+          <?php foreach($genresEloquent as $genreEl) : ?>
+            <li>
+              <a href=<?php echo "/genres/$genreEl->id/dvds" ?>> <?php echo $genreEl->genre_name ?></a>
+            </li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
+    </div>
     <div id="form-search center">
       <form action="/dvds" class="col-lg-6 center form-container" method="get">
         <span class="header-text"> <h2> DVD Search </h2> </span>

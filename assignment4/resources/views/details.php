@@ -224,7 +224,6 @@
       <fieldset class="form-group">
        <label for="formGroupExampleInput">Title</label>
        <input type="text" class="form-control" value="<?php echo old('review_title') ?>" id="reviewTitle" name="review_title" placeholder="Enter Review's Title">
-       <input type="hidden" name="dvd_id" value="<?php echo $movie->id ?>">
      </fieldset>
      <fieldset class="form-group">
       <label for="formGroupExampleInput">Description</label>
@@ -240,7 +239,6 @@
     <?php foreach($reviews as $review) : ?>
       <div class="review">
         <div class="panel panel-heading no-margins review-header">
-
           <strong><?php echo $review->title ?> </strong> |
           <span class="review-rating">
             <?php echo $review->rating ?>

@@ -18,8 +18,13 @@ Route::get('/', function () {
 Route::group(['middleware' => 'web'], function() {
   Route::get('/dvds/search', 'DvdController@search');
   Route::get('/dvds', 'DvdController@results');
-  Route::get('/dvds/{id}', 'DvdController@details');
+  ///genres/{genre id}/dvds
+  Route::get('genres/{genreId}/dvds', 'DvdController@genreResults');
+  Route::get('/dvds/create', 'DvdController@create');
   Route::post('/dvds', 'DvdController@store');
+  Route::get('/dvds/{id}', 'DvdController@details');
+  //Route::post('/dvds', 'DvdController@storeReview');
+
 });
 
 /*
