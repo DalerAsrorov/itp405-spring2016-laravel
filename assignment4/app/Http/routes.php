@@ -10,20 +10,37 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+
+
+Route::group(['prefix' => 'api/v1', 'namespace' => 'API'], function() {
+  //POST /api/v1/dvds
+  Route::post('dvds', 'DvdController@store');
+
+  //GET api/v1/genres
+  Route::get('genres', 'DvdController@index');
+
+  //GET /api/v1/genres/{id}
+  Route::get('genres/{id}', 'DvdController@show');
+
+  //GET /api/v1/dvds
+  Route::get('dvds', 'DvdController@showAllDvds');
+
+  //GET /api/v1/dvds/{id}
+  Route::get('dvds/{id}', 'DvdController@showSingleDvd');
+
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::group(['middleware' => 'web'], function() {
   Route::get('/dvds/search', 'DvdController@search');
   Route::get('/dvds', 'DvdController@results');
-  ///genres/{genre id}/dvds
   Route::get('genres/{genreId}/dvds', 'DvdController@genreResults');
   Route::get('/dvds/create', 'DvdController@create');
   Route::post('/dvds', 'DvdController@store');
   Route::get('/dvds/{id}', 'DvdController@details');
-  //Route::post('/dvds', 'DvdController@storeReview');
 
 });
 
