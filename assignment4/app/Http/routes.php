@@ -10,7 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+use App\Services\API\SoundCloud;
 
 Route::group(['prefix' => 'api/v1', 'namespace' => 'API'], function() {
   //POST /api/v1/dvds
@@ -29,6 +29,14 @@ Route::group(['prefix' => 'api/v1', 'namespace' => 'API'], function() {
   Route::get('dvds/{id}', 'DvdController@showSingleDvd');
 
 });
+
+Route::get('/soundcloud/{username}', function($username) {
+  $soundcloud = new SoundCloud([
+    'clientID' => '8b4d6faddcc921664343f7420f4def20'
+  ]);
+
+});
+
 
 Route::get('/', function () {
     return view('welcome');

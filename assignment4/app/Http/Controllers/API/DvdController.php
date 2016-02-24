@@ -76,14 +76,17 @@ class DvdController extends Controller
     public function showSingleDvd($id)
     {
       $dvd = Dvd::find($id);
-      $genres = Dvd::find($id)->genre;
-      $ratings = Dvd::find($id)->rating;
 
       if(!$dvd) {
         return Response::json([
           'error' => 'DVD not found'
         ], 404);
       }
+
+      $genres = Dvd::find($id)->genre;
+      $ratings = Dvd::find($id)->rating;
+
+
 
       return [
         'dvd' => $dvd,
