@@ -121,7 +121,7 @@
           </div>
         </div>
         <div class=" full">
-          <button class="btn btn-info full" type="submit" style="width: 100%;">Search</button>
+          <button class="btn btn-info full" type="submit" value="Search" style="width: 100%;">Search</button>
         </div>
       </form>
     </div>
