@@ -10,7 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-use App\Services\API\SoundCloud;
+use App\Services\API\iTunes;
 
 Route::group(['prefix' => 'api/v1', 'namespace' => 'API'], function() {
   //POST /api/v1/dvds
@@ -30,12 +30,28 @@ Route::group(['prefix' => 'api/v1', 'namespace' => 'API'], function() {
 
 });
 
-Route::get('/soundcloud/{username}', function($username) {
-  $soundcloud = new SoundCloud([
-    'clientID' => '8b4d6faddcc921664343f7420f4def20'
-  ]);
+// Route::get('/soundcloud/{username}', function ($username) {
+//     $soundcloud = new SoundCloud([
+//     	'clientID' => '8b4d6faddcc921664343f7420f4def20'
+//     ]);
+//
+//     $tracks = $soundcloud->tracks("https://soundcloud.com/$username");
+//
+//     return view('soundcloud', [
+//         'tracks' => $tracks,
+//         'username' => $username
+//     ]);
+// });
 
+// return videos of the specific artist
+Route::get('/itunes/{artist}', function($artist){
+    $itunes = new iTunes();
+    $videos = $itunes->getArtist("https://itunes.apple.com/search?term=$artist&entity=musicVideo&limit=10");
+    return view('itunes', [
+        "artists" => $videos->results
+    ]);
 });
+
 
 
 Route::get('/', function () {

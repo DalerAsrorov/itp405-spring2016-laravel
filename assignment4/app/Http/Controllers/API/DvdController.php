@@ -45,6 +45,7 @@ class DvdController extends Controller
       ];
     }
 
+    // dsfsdf s sdf ds
     public function show($id)
     {
       $genre = Genre::find($id);
